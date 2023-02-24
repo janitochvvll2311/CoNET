@@ -8,7 +8,7 @@
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <RepositoryUrl>https://github.com/janitochvvll2311/CoNET</RepositoryUrl>
     <Authors>Juan Jesús Chávez Villa</Authors>
-    <Version>1.0.0-a</Version>
+    <Version>1.0.0-b</Version>
   </PropertyGroup>
 
   <ItemGroup>
