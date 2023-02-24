@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace CoNET.Controllers;
 
 public class CrudController<T, Q> : ControllerBase
-    where T : class, IEntity, IUpdatable<T>, new()
+    where T : class, IEntity, IUpdatable<T>, IJsonObject, new()
 {
 
     public IRepository<T> Repository { get; }
@@ -20,7 +20,7 @@ public class CrudController<T, Q> : ControllerBase
     public virtual IActionResult Get([FromQuery] Q query)
     {
         var entities = Repository.GetAll();
-        return Ok(entities);
+        return Ok(entities.Select(x => x.ToJson()));
     }
 
     [HttpGet("{id}")]
@@ -31,7 +31,7 @@ public class CrudController<T, Q> : ControllerBase
         {
             return NotFound();
         }
-        return Ok(entity);
+        return Ok(entity.ToJson());
     }
 
     [HttpPost]
@@ -43,7 +43,7 @@ public class CrudController<T, Q> : ControllerBase
             return BadRequest(Errors);
         }
         Repository.Insert(entity);
-        return Ok(entity);
+        return Ok(entity.ToJson());
     }
 
     [HttpPut("{id}")]
@@ -61,7 +61,7 @@ public class CrudController<T, Q> : ControllerBase
         }
         original.Update(entity);
         Repository.Insert(original);
-        return Ok(original);
+        return Ok(original.ToJson());
     }
 
     [HttpDelete("{id}")]
@@ -73,7 +73,7 @@ public class CrudController<T, Q> : ControllerBase
             return NotFound();
         }
         Repository.Delete(entity);
-        return Ok(entity);
+        return Ok(entity.ToJson());
     }
 
 }
