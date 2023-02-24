@@ -35,7 +35,7 @@ public class CrudController<T, Q> : ControllerBase
     }
 
     [HttpPost]
-    public virtual IActionResult Insert([FromBody] T entity, [FromQuery] Q query)
+    public virtual IActionResult Post([FromBody] T entity, [FromQuery] Q query)
     {
         entity.Id = 0;
         if (!Repository.ValidateInsert(entity, Errors))
@@ -47,7 +47,7 @@ public class CrudController<T, Q> : ControllerBase
     }
 
     [HttpPut("{id}")]
-    public virtual IActionResult Insert([FromRoute] int id, [FromBody] T entity, [FromQuery] Q query)
+    public virtual IActionResult Put([FromRoute] int id, [FromBody] T entity, [FromQuery] Q query)
     {
         var original = Repository.GetById(id);
         if (original == null)
@@ -65,7 +65,7 @@ public class CrudController<T, Q> : ControllerBase
     }
 
     [HttpDelete("{id}")]
-    public virtual IActionResult Insert([FromRoute] int id, [FromQuery] Q query)
+    public virtual IActionResult Delete([FromRoute] int id, [FromQuery] Q query)
     {
         var entity = Repository.GetById(id);
         if (entity == null)
