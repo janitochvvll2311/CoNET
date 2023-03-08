@@ -1,3 +1,4 @@
+using CoNET.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace CoNET.Repositories;

@@ -1,4 +1,4 @@
-namespace CoNET.Repositories;
+namespace CoNET.Models;
 
 public interface IEntity
 {

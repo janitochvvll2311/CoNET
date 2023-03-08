@@ -1,3 +1,4 @@
+using CoNET.Models;
 using CoNET.Repositories;
 using Microsoft.AspNetCore.Mvc;
 
@@ -35,7 +36,7 @@ public class CrudController<T, Q> : ControllerBase
     }
 
     [HttpPost]
-    public virtual IActionResult Post([FromBody] T entity, [FromQuery] Q query)
+    public virtual IActionResult Post([FromQuery] Q query, [FromBody] T entity)
     {
         entity.Id = 0;
         if (!Repository.ValidateInsert(entity, Errors))
@@ -47,7 +48,7 @@ public class CrudController<T, Q> : ControllerBase
     }
 
     [HttpPut("{id}")]
-    public virtual IActionResult Put([FromRoute] int id, [FromBody] T entity, [FromQuery] Q query)
+    public virtual IActionResult Put([FromRoute] int id, [FromQuery] Q query, [FromBody] T entity)
     {
         var original = Repository.GetById(id);
         if (original == null)

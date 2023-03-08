@@ -1,3 +1,5 @@
+using CoNET.Models;
+
 namespace CoNET.Repositories;
 
 public interface IRepository<T>

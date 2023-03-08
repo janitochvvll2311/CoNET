@@ -1,4 +1,4 @@
-namespace CoNET.Controllers;
+namespace CoNET.Models;
 
 public interface IJsonObject
 {
