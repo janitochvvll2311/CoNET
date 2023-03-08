@@ -73,6 +73,10 @@ public class CrudController<T, Q> : ControllerBase
         {
             return NotFound();
         }
+        if (!Repository.ValidateDelete(entity, Errors))
+        {
+            return BadRequest(Errors);
+        }
         Repository.Delete(entity);
         return Ok(entity.ToJson());
     }

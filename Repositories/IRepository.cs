@@ -12,4 +12,5 @@ public interface IRepository<T>
     public void Delete(T entity);
     public bool ValidateInsert(T entity, IList<string> errors) => true;
     public bool ValidateUpdate(T entity, IList<string> errors) => true;
+    public bool ValidateDelete(T entity, IList<string> errors) => true;
 }
