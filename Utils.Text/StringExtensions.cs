@@ -17,4 +17,25 @@ public static class StringExtensions
         return result;
     }
 
+    public static string GetSegment(this string @string, string separator, int index)
+    {
+        var segments = @string.Split(separator);
+        var segment = segments[index];
+        return segment;
+    }
+
+    public static string GetFirstSegment(this string @string, string separator)
+    {
+        var index = @string.IndexOf(separator);
+        var segment = @string.Substring(0, index);
+        return segment;
+    }
+
+    public static string GetLastSegment(this string @string, string separator)
+    {
+        var index = @string.LastIndexOf(separator);
+        var segment = @string.Substring(index + 1);
+        return segment;
+    }
+
 }

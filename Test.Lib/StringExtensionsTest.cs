@@ -7,37 +7,46 @@ public static class StringExtensionsTest
 {
 
     [Theory]
-    [InlineData(null)]
-    [InlineData("")]
-    [InlineData("    ")]
-    [InlineData("\t\n")]
-    public static void IsNullOrBlank_True(string? @string)
+    [InlineData(null, true)]
+    [InlineData("", true)]
+    [InlineData("    ", true)]
+    [InlineData("\t\n", true)]
+    [InlineData("  0  ", false)]
+    public static void IsNullOrBlank(string? @string, bool result)
     {
-        Assert.True(@string.IsNullOrBlank());
+        Assert.Equal(@string.IsNullOrBlank(), result);
     }
 
     [Theory]
-    [InlineData("  0  ")]
-    public static void IsNullOrBlank_False(string? @string)
+    [InlineData(null, false)]
+    [InlineData("", false)]
+    [InlineData("    ", false)]
+    [InlineData("\t\n", false)]
+    [InlineData("  0  ", true)]
+    public static void IsNotNullOrBlank(string? @string, bool result)
     {
-        Assert.False(@string.IsNullOrBlank());
+        Assert.Equal(@string.IsNotNullOrBlank(), result);
     }
 
     [Theory]
-    [InlineData("  0  ")]
-    public static void IsNotNullOrBlank_True(string? @string)
+    [InlineData("ext1.ext2.ext3", ".", 1, "ext2")]
+    public static void GetSegment(string @string, string separator, int index, string result)
     {
-        Assert.True(@string.IsNotNullOrBlank());
+        Assert.Equal(@string.GetSegment(separator, index), result);
     }
 
     [Theory]
-    [InlineData(null)]
-    [InlineData("")]
-    [InlineData("    ")]
-    [InlineData("\t\n")]
-    public static void IsNotNullOrBlank_False(string? @string)
+    [InlineData("ext1.ext2.ext3", ".", "ext1")]
+    public static void GetFirstSegment(string @string, string separator, string result)
     {
-        Assert.False(@string.IsNotNullOrBlank());
+        Assert.Equal(@string.GetFirstSegment(separator), result);
+    }
+
+    [Theory]
+    [InlineData("ext1.ext2.ext3", ".", "ext3")]
+    public static void GetLastSegment(string @string, string separator, string result)
+    {
+        Assert.Equal(@string.GetLastSegment(separator), result);
     }
 
 }
