@@ -7,7 +7,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/CoNET.csproj",
+                "${workspaceFolder}/Test.Console/Test.Console.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -19,7 +19,7 @@
             "type": "process",
             "args": [
                 "publish",
-                "${workspaceFolder}/CoNET.csproj",
+                "${workspaceFolder}/Test.Console/Test.Console.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -33,7 +33,7 @@
                 "watch",
                 "run",
                 "--project",
-                "${workspaceFolder}/CoNET.csproj"
+                "${workspaceFolder}/Test.Console/Test.Console.csproj"
             ],
             "problemMatcher": "$msCompile"
         }
