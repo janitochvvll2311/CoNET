@@ -5,7 +5,7 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
   <PropertyGroup>
-    <PackageId>CoNET.Utils.Text</PackageId>
+    <PackageId>CoNET.Utils.Crypto</PackageId>
     <Version>1.0.0-a</Version>
     <Authors>Juan Jesus Chavez Villa</Authors>
     <PackageReadmeFile>README.md</PackageReadmeFile>

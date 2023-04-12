@@ -24,6 +24,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Utils.Text\Utils.Text.csproj" />
+    <ProjectReference Include="..\Utils.Crypto\Utils.Crypto.csproj" />
   </ItemGroup>
 
 </Project>

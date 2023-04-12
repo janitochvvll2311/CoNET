@@ -1,7 +1,7 @@
 using System.Text.RegularExpressions;
 using CoNET.Utils.Text;
 
-namespace Test.Lib;
+namespace CoNET.Test.Lib;
 
 public static class StringExtensionsTest
 {
