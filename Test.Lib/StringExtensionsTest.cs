@@ -1,28 +1,43 @@
+using System.Text.RegularExpressions;
 using CoNET.Utils.Text;
 
 namespace Test.Lib;
 
-public class StringExtensionsTest
+public static class StringExtensionsTest
 {
 
-    [Fact]
-    public void IsNullOrBlank()
+    [Theory]
+    [InlineData(null)]
+    [InlineData("")]
+    [InlineData("    ")]
+    [InlineData("\t\n")]
+    public static void IsNullOrBlank_True(string? @string)
     {
-        Assert.True((null as string).IsNullOrBlank());
-        Assert.True("".IsNullOrBlank());
-        Assert.True("    ".IsNullOrBlank());
-        Assert.True("\t\n".IsNullOrBlank());
-        Assert.False("  0  ".IsNullOrBlank());
+        Assert.True(@string.IsNullOrBlank());
     }
 
-    [Fact]
-    public void IsNotNullOrBlank()
+    [Theory]
+    [InlineData("  0  ")]
+    public static void IsNullOrBlank_False(string? @string)
     {
-        Assert.False((null as string).IsNotNullOrBlank());
-        Assert.False("".IsNotNullOrBlank());
-        Assert.False("    ".IsNotNullOrBlank());
-        Assert.False("\t\n".IsNotNullOrBlank());
-        Assert.True("  0  ".IsNotNullOrBlank());
+        Assert.False(@string.IsNullOrBlank());
+    }
+
+    [Theory]
+    [InlineData("  0  ")]
+    public static void IsNotNullOrBlank_True(string? @string)
+    {
+        Assert.True(@string.IsNotNullOrBlank());
+    }
+
+    [Theory]
+    [InlineData(null)]
+    [InlineData("")]
+    [InlineData("    ")]
+    [InlineData("\t\n")]
+    public static void IsNotNullOrBlank_False(string? @string)
+    {
+        Assert.False(@string.IsNotNullOrBlank());
     }
 
 }
