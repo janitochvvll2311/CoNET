@@ -29,7 +29,11 @@ public static class StringExtensionsTest
     }
 
     [Theory]
-    [InlineData("ext1.ext2.ext3", ".", 1, "ext2")]
+    [InlineData("ext1.ext2.ext3.ext4.ext5", ".", 0, "ext1")]
+    [InlineData("ext1.ext2.ext3.ext4.ext5", ".", 1, "ext2")]
+    [InlineData("ext1.ext2.ext3.ext4.ext5", ".", 2, "ext3")]
+    [InlineData("ext1.ext2.ext3.ext4.ext5", ".", 3, "ext4")]
+    [InlineData("ext1.ext2.ext3.ext4.ext5", ".", 4, "ext5")]
     public static void GetSegment(string @string, string separator, int index, string result)
     {
         Assert.Equal(@string.GetSegment(separator, index), result);

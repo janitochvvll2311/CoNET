@@ -19,9 +19,22 @@ public static class StringExtensions
 
     public static string GetSegment(this string @string, string separator, int index)
     {
-        var segments = @string.Split(separator);
-        var segment = segments[index];
-        return segment;
+        var offset = 0;
+        for (var i = 0; i < index && offset < @string.Length; i++)
+        {
+            offset = @string.IndexOf(separator, offset) + separator.Length;
+        }
+        var length = @string.IndexOf(separator, offset) - offset;
+        if (length > 0)
+        {
+            var segment = @string.Substring(offset, length);
+            return segment;
+        }
+        else
+        {
+            var segment = @string.Substring(offset);
+            return segment;
+        }
     }
 
     public static string GetFirstSegment(this string @string, string separator)
