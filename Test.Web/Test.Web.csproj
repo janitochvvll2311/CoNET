@@ -1,9 +1,12 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
-
+  <ItemGroup>
+    <ProjectReference Include="..\Services.Rooms\Services.Rooms.csproj"/>
+    <ProjectReference Include="..\Utils.Text\Utils.Text.csproj"/>
+  </ItemGroup>
   <PropertyGroup>
     <TargetFramework>net7.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <IsPackable>false</IsPackable>
   </PropertyGroup>
-
 </Project>

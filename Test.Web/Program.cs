@@ -1,6 +1,12 @@
-var builder = WebApplication.CreateBuilder(args);
-var app = builder.Build();
+using CoNET.Services.Rooms;
 
-app.MapGet("/", () => "Hello World!");
+var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddControllers();
+builder.Services.AddSingleton(new RoomService(128));
+
+var app = builder.Build();
+app.UseFileServer();
+app.UseWebSockets();
+app.MapControllers();
 
 app.Run();

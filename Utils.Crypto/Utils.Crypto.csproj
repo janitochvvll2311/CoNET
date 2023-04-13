@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PackageId>CoNET.Utils.Crypto</PackageId>
+    <Version>1.0.0-a</Version>
+    <Authors>Juan Jesus Chavez Villa</Authors>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Include="..\README.md" Pack="true" PackagePath=""/>
+    <None Include="..\LICENSE.txt" Pack="true" PackagePath=""/>
+  </ItemGroup>
+</Project>
