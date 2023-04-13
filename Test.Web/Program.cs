@@ -7,5 +7,6 @@ builder.Services.AddSingleton(new RoomService(128));
 var app = builder.Build();
 app.UseFileServer();
 app.UseWebSockets();
+app.MapControllers();
 
 app.Run();
