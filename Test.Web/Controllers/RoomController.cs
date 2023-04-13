@@ -20,6 +20,12 @@ public class RoomController : ControllerBase, IRoomController
         return this.GetRoomList(tag);
     }
 
+    [HttpGet("{code}")]
+    public IActionResult Get([FromRoute] int code)
+    {
+        return this.GetRoomInfo(code);
+    }
+
     [HttpPost]
     public IActionResult Post([FromQuery] int slots, [FromQuery] string? password, [FromQuery] string? tag)
     {

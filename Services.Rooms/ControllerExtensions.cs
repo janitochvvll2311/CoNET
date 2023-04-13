@@ -24,6 +24,21 @@ public static class ControllerExtensions
         }));
     }
 
+    public static IActionResult GetRoomInfo<T>(this T controller, int code)
+        where T : ControllerBase, IRoomController
+    {
+        var room = controller.RoomService.Rooms.GetValueOrDefault(code);
+        if (room == null) return controller.NotFound();
+        return controller.Ok(new
+        {
+            code = code,
+            slots = room.Slots,
+            members = room.Members.Count,
+            password = room.Password.IsNotNullOrBlank(),
+            tag = room.Tag,
+        });
+    }
+
     public static IActionResult CreateRoom<T>(this T controller, int slots, string? password, string? tag)
         where T : ControllerBase, IRoomController
     {
