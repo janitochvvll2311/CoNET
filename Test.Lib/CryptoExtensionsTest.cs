@@ -9,7 +9,7 @@ public static class CryptoExtensionsTest
     public const string Message = "A secret message or data to protect";
 
     [Fact]
-    public static void GenerateKeyPairTest()
+    public static void GenerateKeyPair()
     {
         var data = new byte[0];
         var kPair = data.GenerateKeyPair();
@@ -19,7 +19,7 @@ public static class CryptoExtensionsTest
 
     [Theory]
     [InlineData(Message)]
-    public static void EncryptDecryptTest(string message)
+    public static void EncryptDecrypt(string message)
     {
         var data = Encoding.UTF8.GetBytes(message);
         var kPair = data.GenerateKeyPair();

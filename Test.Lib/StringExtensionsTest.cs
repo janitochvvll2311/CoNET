@@ -36,21 +36,51 @@ public static class StringExtensionsTest
     [InlineData("ext1.ext2.ext3.ext4.ext5", ".", 4, "ext5")]
     public static void GetSegment(string @string, string separator, int index, string result)
     {
-        Assert.Equal(@string.GetSegment(separator, index), result);
+        Assert.Equal(@string.GetSegment(separator, index).ToString(), result);
     }
 
     [Theory]
     [InlineData("ext1.ext2.ext3", ".", "ext1")]
     public static void GetFirstSegment(string @string, string separator, string result)
     {
-        Assert.Equal(@string.GetFirstSegment(separator), result);
+        Assert.Equal(@string.GetFirstSegment(separator).ToString(), result);
     }
 
     [Theory]
     [InlineData("ext1.ext2.ext3", ".", "ext3")]
     public static void GetLastSegment(string @string, string separator, string result)
     {
-        Assert.Equal(@string.GetLastSegment(separator), result);
+        Assert.Equal(@string.GetLastSegment(separator).ToString(), result);
+    }
+
+    [Fact]
+    public static void ToDictionary_Empty()
+    {
+        var @string = "";
+        var dictionary = @string.ToDictionary(";", "=");
+        Assert.Equal(dictionary, new Dictionary<string, string> { });
+    }
+
+    [Fact]
+    public static void ToDictionary_Single()
+    {
+        var @string = "KeyA=ValueA";
+        var dictionary = @string.ToDictionary(";", "=");
+        Assert.Equal(dictionary, new Dictionary<string, string> {
+            {"KeyA", "ValueA"}
+        });
+    }
+
+    [Fact]
+    public static void ToDictionary_Multple()
+    {
+        var @string = "KeyA=ValueA;KeyB=ValueB;KeyC=ValueC";
+        var dictionary = @string.ToDictionary(";", "=");
+        Assert.Equal(dictionary, new Dictionary<string, string> {
+            {"KeyA", "ValueA"},
+            {"KeyB", "ValueB"},
+            {"KeyC", "ValueC"},
+        });
     }
 
 }
