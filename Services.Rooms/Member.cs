@@ -9,17 +9,26 @@ public class Member
 
     public async Task SendAsync(Message message)
     {
-        await Socket.SendAsync(message.Buffer.Slice(0, message.Offset + message.Length), WebSocketMessageType.Text, true, default);
+        try
+        {
+            await Socket.SendAsync(message.Buffer.Slice(0, message.Offset + message.Length), WebSocketMessageType.Text, true, default);
+        }
+        catch { }
     }
 
     public async Task ReceiveAsync(Message message)
     {
-        var result = await Socket.ReceiveAsync(message.BodyBuffer, default);
-        if (result.MessageType != WebSocketMessageType.Text)
+        message.Length = 0;
+        try
         {
-            await Socket.CloseOutputAsync(WebSocketCloseStatus.NormalClosure, null, default);
+            var result = await Socket.ReceiveAsync(message.BodyBuffer, default);
+            if (result.MessageType != WebSocketMessageType.Text)
+            {
+                await Socket.CloseOutputAsync(WebSocketCloseStatus.NormalClosure, null, default);
+            }
+            message.Length = result.Count;
         }
-        message.Length = result.Count;
+        catch { }
     }
 
     public Member(WebSocket socket)

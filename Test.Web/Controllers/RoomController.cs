@@ -1,9 +1,10 @@
+using CoNET.Services.Rooms;
 using Microsoft.AspNetCore.Mvc;
 
-namespace CoNET.Services.Rooms.Controllers;
+namespace CoNET.Test.Web.Controllers;
 
 [Route("/api/[controller]")]
-public class RoomController : ControllerBase
+public class RoomController : ControllerBase, IRoomController
 {
 
     public RoomService RoomService { get; }
@@ -13,19 +14,22 @@ public class RoomController : ControllerBase
         RoomService = roomService;
     }
 
+    [HttpGet]
+    public IActionResult Get([FromQuery] string? tag)
+    {
+        return this.GetRoomList(tag);
+    }
+
     [HttpPost]
     public IActionResult Post([FromQuery] int slots, [FromQuery] string? password, [FromQuery] string? tag)
     {
-        var code = RoomService.CreateRoom(slots, password, tag);
-        if (code == null) return NotFound();
-        return Ok(code);
+        return this.CreateRoom(slots, password, tag);
     }
 
     [HttpGet("join")]
     public async Task GetJoin([FromQuery] int code, [FromQuery] string? password)
     {
-        var socket = await HttpContext.WebSockets.AcceptWebSocketAsync();
-        await RoomService.JoinRoom(socket, code, password);
+        await this.JoinRoom(code, password);
     }
 
 }
