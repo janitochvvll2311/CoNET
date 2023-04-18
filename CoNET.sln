@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Utils.Crypto", "Utils.Crypt
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services.Rooms", "Services.Rooms\Services.Rooms.csproj", "{2557EC43-6EA2-490F-A192-67ADA5F01F81}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services.Server", "Services.Server\Services.Server.csproj", "{93349C94-021D-4156-AE45-635013435753}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -48,5 +50,9 @@ Global
 		{2557EC43-6EA2-490F-A192-67ADA5F01F81}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2557EC43-6EA2-490F-A192-67ADA5F01F81}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2557EC43-6EA2-490F-A192-67ADA5F01F81}.Release|Any CPU.Build.0 = Release|Any CPU
+		{93349C94-021D-4156-AE45-635013435753}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{93349C94-021D-4156-AE45-635013435753}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{93349C94-021D-4156-AE45-635013435753}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{93349C94-021D-4156-AE45-635013435753}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
